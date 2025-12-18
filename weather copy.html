@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather & Irrigation – AgroFocus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    
+    <!-- SIDEBAR (same design as dashboard) -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-badge">🌱</div>
+          <div>
+            <div class="logo-text-main">AgroFocus</div>
+            <div class="logo-text-sub">Smart farm insights</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.8rem;">
+          <div class="sidebar-section-title">Overview</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><span class="icon">📊</span><span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="field-map.html"><span class="icon">📍</span><span>Field Map</span></a>
+            </li>
+            <li class="nav-item active">
+              <a href="weather.html"><span class="icon">🌧</span><span>Weather & Irrigation</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="crop-health.html"><span class="icon">🌾</span><span>Crop Health</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+  <div class="sidebar-section-title">Analytics</div>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="yield-trends.html">
+        <span class="icon">📈</span>
+        <span>Yield Trends</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="water-use.html">
+        <span class="icon">💧</span>
+        <span>Water Use</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="soil-lab.html">
+        <span class="icon">🧪</span>
+        <span>Soil Lab</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-env">
+          <span>🛰</span>
+          <span>NDVI & satellite enabled</span>
+        </div>
+        <div>Last sync: <strong>2 min ago</strong></div>
+      </div>
+    </aside>
+    
+    <!-- MAIN PAGE -->
+    <main class="main">
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <h1>Weather & Irrigation</h1>
+      <p>
+        Monitor rainfall, temperature and evapotranspiration to adjust irrigation
+        for each field.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <section class="content-grid">
+    <!-- LEFT CARD: TODAY'S WEATHER -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Today’s Weather</div>
+          <div class="card-subtitle">Location: Farm HQ · Updated 10 min ago</div>
+        </div>
+      </div>
+
+      <div class="weather-today">
+        <div class="weather-today-main">
+          <div class="weather-temp">29°C</div>
+          <div class="weather-meta-big">Partly cloudy · Humid</div>
+          <div class="weather-meta-row">
+            <span>Feels like: <strong>31°C</strong></span>
+            <span>Wind: <strong>8 km/h</strong></span>
+            <span>Humidity: <strong>72%</strong></span>
+          </div>
+          <div class="weather-meta-row">
+            <span>Rain chance: <strong>40%</strong></span>
+            <span>Sunrise: <strong>06:01</strong></span>
+            <span>Sunset: <strong>18:27</strong></span>
+          </div>
+        </div>
+
+        <div class="weather-today-extra">
+          <div class="chip">
+  🌧 Expected rainfall today: <strong id="today - mm">-- mm</strong>
+</div>
+          <div class="chip">🔥 ET₀ (reference evapotranspiration): <strong>4.2 mm</strong></div>
+          <div class="chip">💧 Net water requirement: <strong>+1.8 mm</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT CARD: 7-DAY FORECAST -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">7-day Forecast</div>
+          <div class="card-subtitle">Use this to plan irrigation windows</div>
+        </div>
+      </div>
+
+      <div class="forecast-grid">
+        <div class="forecast-day">
+          <div class="forecast-name">Today</div>
+          <div class="forecast-temp">30°C</div>
+          <div class="forecast-rain">🌧 6 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+1</div>
+          <div class="forecast-temp">31°C</div>
+          <div class="forecast-rain">🌥 2 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+2</div>
+          <div class="forecast-temp">32°C</div>
+          <div class="forecast-rain">☀ 0 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+3</div>
+          <div class="forecast-temp">29°C</div>
+          <div class="forecast-rain">🌧 10 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+4</div>
+          <div class="forecast-temp">28°C</div>
+          <div class="forecast-rain">🌧 4 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+5</div>
+          <div class="forecast-temp">30°C</div>
+          <div class="forecast-rain">🌥 1 mm</div>
+        </div>
+        <div class="forecast-day">
+          <div class="forecast-name">D+6</div>
+          <div class="forecast-temp">31°C</div>
+          <div class="forecast-rain">☀ 0 mm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IRRIGATION PLAN CARD -->
+  <section class="card" style="margin-top:1rem;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Irrigation Plan (Next 3 days)</div>
+        <div class="card-subtitle">
+          Auto-suggested based on rainfall and ET. Adjust values before sending to field staff.
+        </div>
+      </div>
+    </div>
+
+    <table class="irrigation-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Crop</th>
+          <th>Soil moisture</th>
+          <th>Rain expected</th>
+          <th>Recommended irrigation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>North Plot</td>
+          <td>Wheat</td>
+          <td>46% (OK)</td>
+          <td>Low (2 mm)</td>
+          <td>Skip today · Review in 2 days</td>
+        </tr>
+        <tr>
+          <td>East Plot</td>
+          <td>Rice</td>
+          <td>32% (Low)</td>
+          <td>Moderate (6 mm)</td>
+          <td>Apply <strong>18 mm</strong> this evening</td>
+        </tr>
+        <tr>
+          <td>South Plot</td>
+          <td>Maize</td>
+          <td>38% (Medium)</td>
+          <td>High (10 mm in 48h)</td>
+          <td>Delay irrigation, reassess after rain</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

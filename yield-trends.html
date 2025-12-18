@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yield Trends – AgroFocus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-badge">🌱</div>
+          <div>
+            <div class="logo-text-main">AgroFocus</div>
+            <div class="logo-text-sub">Smart farm insights</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.8rem;">
+          <div class="sidebar-section-title">Overview</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><span class="icon">📊</span><span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="field-map.html"><span class="icon">📍</span><span>Field Map</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="weather.html"><span class="icon">🌧</span><span>Weather & Irrigation</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="crop-health.html"><span class="icon">🌾</span><span>Crop Health</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <div class="sidebar-section-title">Analytics</div>
+          <ul class="nav-list">
+            <li class="nav-item active">
+              <a href="yield-trends.html"><span class="icon">📈</span><span>Yield Trends</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="water-use.html"><span class="icon">💧</span><span>Water Use</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="soil-lab.html"><span class="icon">🧪</span><span>Soil Lab</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-env">
+          <span>🛰</span>
+          <span>NDVI & satellite enabled</span>
+        </div>
+        <div>Last sync: <strong>2 min ago</strong></div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <h1>Yield Trends</h1>
+          <p>
+            Compare yield across years, crops and seasons to see long-term performance.
+          </p>
+        </div>
+      </header>
+
+      <!-- TOP GRID: TABLE + GRAPH -->
+      <section class="content-grid">
+        <!-- LEFT: TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Crop-wise Yield (Last 4 years)</div>
+              <div class="card-subtitle">Values in tonnes per hectare (t/ha)</div>
+            </div>
+          </div>
+
+          <table class="yield-table">
+            <thead>
+              <tr>
+                <th>Crop</th>
+                <th>2022</th>
+                <th>2023</th>
+                <th>2024</th>
+                <th>2025*</</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Wheat</td>
+                <td>3.1</td>
+                <td>3.4</td>
+                <td>3.6</td>
+                <td>3.9</td>
+              </tr>
+              <tr>
+                <td>Maize</td>
+                <td>4.0</td>
+                <td>4.2</td>
+                <td>4.1</td>
+                <td>4.4</td>
+              </tr>
+              <tr>
+                <td>Rice</td>
+                <td>3.5</td>
+                <td>3.6</td>
+                <td>3.8</td>
+                <td>4.0</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="card-subtitle" style="margin-top:0.4rem;">
+            *2025 values are in-season projections based on current crop health and weather.
+          </p>
+        </div>
+
+        <!-- RIGHT: BAR GRAPH (SVG, self-contained) -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Overall Farm Yield Trend</div>
+              <div class="card-subtitle">Average yield (all crops) per year</div>
+            </div>
+          </div>
+
+          <div style="margin-top:0.6rem;">
+            <svg viewBox="0 0 320 190" width="100%" preserveAspectRatio="xMidYMid meet">
+              <!-- Axes -->
+              <line x1="40" y1="30" x2="40" y2="160"
+                    stroke="#4b5563" stroke-width="1" />
+              <line x1="40" y1="160" x2="300" y2="160"
+                    stroke="#4b5563" stroke-width="1" />
+
+              <!-- Y-axis labels -->
+              <text x="28" y="40" style="fill:#9ca3af;font-size:10px;">5.0</text>
+              <text x="28" y="70" style="fill:#9ca3af;font-size:10px;">4.5</text>
+              <text x="28" y="100" style="fill:#9ca3af;font-size:10px;">4.0</text>
+              <text x="28" y="130" style="fill:#9ca3af;font-size:10px;">3.5</text>
+              <text x="28" y="160" style="fill:#9ca3af;font-size:10px;">3.0</text>
+
+              <!-- Bars -->
+              <!-- 2022 ~ 3.3 t/ha -->
+              <rect x="70" y="87" width="35" height="73" rx="6"
+                    fill="#22c55e" />
+              <!-- 2023 ~ 3.7 t/ha -->
+              <rect x="130" y="79" width="35" height="81" rx="6"
+                    fill="#22c55e" />
+              <!-- 2024 ~ 4.0 t/ha -->
+              <rect x="190" y="72" width="35" height="88" rx="6"
+                    fill="#22c55e" />
+              <!-- 2025 ~ 4.3 t/ha -->
+              <rect x="250" y="65" width="35" height="95" rx="6"
+                    fill="#22c55e" />
+
+              <!-- X-axis labels -->
+              <text x="87"  y="175" text-anchor="middle" style="fill:#9ca3af;font-size:10px;">2022</text>
+              <text x="147" y="175" text-anchor="middle" style="fill:#9ca3af;font-size:10px;">2023</text>
+              <text x="207" y="175" text-anchor="middle" style="fill:#9ca3af;font-size:10px;">2024</text>
+              <text x="267" y="175" text-anchor="middle" style="fill:#9ca3af;font-size:10px;">2025*</text>
+
+              <!-- Y axis unit label -->
+              <text x="14" y="95" transform="rotate(-90 14 95)"
+                    style="fill:#9ca3af;font-size:10px;">t/ha</text>
+            </svg>
+
+            <div class="yield-notes">
+              <div class="chip">
+                📈 Average yield improvement: <strong>+0.7 t/ha</strong> since 2022
+              </div>
+              <div class="chip">
+                🌾 Biggest gain: <strong>Maize</strong> with better irrigation & fertilizer timing
+              </div>
+              <div class="chip">
+                💡 Suggestion: keep split-dose fertilization & precise irrigation
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM: SEASON COMPARISON -->
+      <section class="card" style="margin-top:1rem;">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Season Comparison</div>
+            <div class="card-subtitle">Kharif vs Rabi performance (t/ha)</div>
+          </div>
+        </div>
+
+        <table class="yield-table">
+          <thead>
+            <tr>
+              <th>Season</th>
+              <th>2023</th>
+              <th>2024</th>
+              <th>2025*</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kharif</td>
+              <td>3.7</td>
+              <td>3.9</td>
+              <td>4.1</td>
+              <td>Better rainfall + improved pest control</td>
+            </tr>
+            <tr>
+              <td>Rabi</td>
+              <td>3.3</td>
+              <td>3.5</td>
+              <td>3.8</td>
+              <td>Improved soil health and irrigation timing</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

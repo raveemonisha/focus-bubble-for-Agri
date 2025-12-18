@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+  <meta charset="UTF-8" />
+  <title>Agro Focus Bubble Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+  
+
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+  
+
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-badge">🌱</div>
+          <div>
+            <div class="logo-text-main">AgroFocus</div>
+            <div class="logo-text-sub">Smart farm insights</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.8rem;">
+          <div class="sidebar-section-title">Overview</div>
+          <ul class="nav-list">
+  <li class="nav-item active">
+    <a href="index.html">
+      <span class="icon">📊</span>
+      <span>Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="field-map.html">
+      <span class="icon">📍</span>
+      <span>Field Map</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="Weather.html">
+      <span class="icon">🌧️</span>
+      <span>Weather & Irrigation</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="crop-health.html">
+      <span class="icon">🌾</span>
+      <span>Crop Health</span>
+    </a>
+  </li>
+</ul>
+
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <div class="sidebar-section-title">Analytics</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <span class="icon">📈</span>
+              <span>Yield Trends</span>
+            </li>
+            <li class="nav-item">
+              <span class="icon">💧</span>
+              <span>Water Use</span>
+            </li>
+            <li class="nav-item">
+              <span class="icon">🧪</span>
+              <span>Soil Lab</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-env">
+          <span>🛰️</span>
+          <span>NDVI & satellite enabled</span>
+        </div>
+        <div>Last sync: <strong>2 min ago</strong></div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <h1>Focus Bubble Dashboard</h1>
+          <p>Track the most important signals from your fields in one interactive view.</p>
+        </div>
+        <div class="top-bar-right">
+          <div class="search-input">
+  <input
+    type="text"
+    id="globalSearch"
+    placeholder="Search field, crop, alert..."
+  />
+  <span>🔍</span>
+</div>
+
+<div class="user-pill">
+  <div class="user-avatar">
+    <img src="https://images.unsplash.com/photo-1542326237-94b1c5a538d9" />
+  </div>
+  <div class="user-info">
+    <span id="userName"></span>
+
+    <span class="role">Farm Manager</span>
+  </div>
+  <button id="logoutBtn" class="logout-btn">Logout</button>
+</div>
+
+        </div>
+      </header>
+      
+
+  
+
+
+      <!-- HERO + FOCUS BUBBLES -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="focus-content">
+  <h2 id="focusTitle">Today's Focus: Soil & Irrigation</h2>
+
+  <p id="focusDesc">
+    AI picks the top risk zones and opportunities across your fields.
+    Tap a bubble to pivot the dashboard to that focus area.
+  </p>
+
+  <div class="focus-metric">
+    <span id="metricTitle">Average soil moisture</span>
+    <strong id="metricValue">46%</strong>
+  </div>
+</div>
+
+          <div class="hero-tags">
+            <div class="hero-tag">🛰️ NDVI anomaly: <strong>+8.2%</strong></div>
+            <div class="hero-tag">💧 Water stress index: <strong>Moderate</strong></div>
+            <div class="hero-tag">📆 Season: <strong>Kharif 2025</strong></div>
+          </div>
+
+          <div class="hero-cta">
+            <button class="btn-primary" id="view-soil-actions-btn">view soil actions
+              <span>→</span>
+            </button>
+            <div class="hero-meta">
+              <strong>12</strong> recommended tasks · <strong>4</strong> high-priority alerts
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-image"></div>
+          <div class="hero-overlay"></div>
+          <div class="focus-bubbles">
+            <div class="focus-bubble active" data-focus="soil">
+              <span class="icon">🧪</span>
+              <span class="label">Soil</span>
+              <span>pH OK · N low</span>
+            </div>
+            <div class="focus-bubble" data-focus="water">
+              <span class="icon">💧</span>
+              <span class="label">Water</span>
+              <span>Stress: Med</span>
+            </div>
+            <div class="focus-bubble" data-focus="crop">
+              <span class="icon">🌾</span>
+              <span class="label">Crop Health</span>
+              <span>87% good</span>
+            </div>
+            <div class="focus-bubble" data-focus="market">
+              <span class="icon">💹</span>
+              <span class="label">Market</span>
+              <span>Prices ↑</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <!-- MAIN CONTENT -->
+      <section class="content-grid">
+        <!-- LEFT: METRICS & CHART -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Field Metrics Snapshot</div>
+              <div class="card-subtitle">Updated for selected focus bubble</div>
+            </div>
+            <div class="pill" id="focusLabel">Focus: Soil</div>
+          </div>
+
+          <div class="card-kpis">
+            <div class="kpi">
+              <div class="kpi-label">Average soil moisture</div>
+              <div class="kpi-value" id="kpiMoisture">46%</div>
+              <div class="kpi-trend up">▲ +4% vs yesterday</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Nitrogen level</div>
+              <div class="kpi-value" id="kpiNitrogen">Low</div>
+              <div class="kpi-trend down">▼ Needs attention</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Irrigation today</div>
+              <div class="kpi-value" id="kpiIrrigation">23 mm</div>
+              <div class="kpi-trend up">▲ Slightly above plan</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Expected yield</div>
+              <div class="kpi-value" id="kpiYield">3.8 t/ha</div>
+              <div class="kpi-trend up">▲ +0.4 t/ha vs last year</div>
+            </div>
+          </div>
+
+          <div class="mini-chart-wrapper">
+            <div>
+              <div class="card-subtitle" style="margin-bottom: 0.3rem;">
+                Soil moisture trend (last 7 days)
+              </div>
+              <div class="mini-chart">
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar0" style="height: 30%; animation-delay: 0.05s;"></div>
+                  </div>
+                  <div class="bar-label">D-6</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar1" style="height: 40%; animation-delay: 0.1s;"></div>
+                  </div>
+                  <div class="bar-label">D-5</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar2" style="height: 50%; animation-delay: 0.15s;"></div>
+                  </div>
+                  <div class="bar-label">D-4</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar3" style="height: 55%; animation-delay: 0.2s;"></div>
+                  </div>
+                  <div class="bar-label">D-3</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar4" style="height: 60%; animation-delay: 0.25s;"></div>
+                  </div>
+                  <div class="bar-label">D-2</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar5" style="height: 65%; animation-delay: 0.3s;"></div>
+                  </div>
+                  <div class="bar-label">Yesterday</div>
+                </div>
+                <div>
+                  <div class="bar">
+                    <div class="bar-fill fade-in" id="bar6" style="height: 70%; animation-delay: 0.35s;"></div>
+                  </div>
+                  <div class="bar-label">Today</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card-subtitle" style="margin-bottom: 0.3rem;">
+                Quick insights
+              </div>
+              <div class="chart-meta-row">
+                <div class="chip">
+                  <span class="trend-dot up"></span> Moisture trending up
+                </div>
+                <div class="chip">
+                  <span class="trend-dot flat"></span> NDVI stable
+                </div>
+                <div class="chip">
+                  <span class="trend-dot down"></span> Nitrogen falling
+                </div>
+                <div class="chip">
+                  💡 Suggests: Split fertilizer dose
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: ALERTS & IMAGES -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Smart Alerts</div>
+              <div class="card-subtitle">Prioritized by impact & urgency</div>
+            </div>
+            <div class="pill">4 critical · 6 normal</div>
+          </div>
+
+          <div class="alerts-list">
+            <div class="alert-item">
+              <div class="alert-icon">⚠️</div>
+              <div>
+                <div class="alert-title">Low soil moisture in Field 3 (Maize)</div>
+                <div class="alert-meta">
+                  Top 12% driest area · Irrigation overdue by <strong>1 day</strong>
+                </div>
+                <div class="alert-tag danger">High impact · Act today</div>
+              </div>
+            </div>
+
+            <div class="alert-item">
+              <div class="alert-icon">🌧️</div>
+              <div>
+                <div class="alert-title">Rain expected in next 6 hours</div>
+                <div class="alert-meta">
+                  Reduce scheduled irrigation by 35% to avoid waterlogging.
+                </div>
+                <div class="alert-tag warning">Weather based suggestion</div>
+              </div>
+            </div>
+
+            <div class="alert-item">
+              <div class="alert-icon">🌿</div>
+              <div>
+                <div class="alert-title">NDVI drop in northern boundary</div>
+                <div class="alert-meta">
+                  Possible pest or nutrient stress detected in 2.1 ha zone.
+                </div>
+                <div class="alert-tag ok">Scout visit recommended</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-strip">
+            <div class="image-tile">
+              <img src="https://images.unsplash.com/photo-1527847263472-aa5338d178b8?auto=format&fit=crop&w=600&q=80" alt="Crop close-up" />
+              <div class="image-tile-overlay"></div>
+              <div class="image-tile-caption">
+                <span class="label">Crop health snapshot</span>
+                <span class="meta">Visual inspection from last scout</span>
+              </div>
+            </div>
+            <div class="image-tile">
+              <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Irrigation" />
+              <div class="image-tile-overlay"></div>
+              <div class="image-tile-caption">
+                <span class="label">Drip irrigation line</span>
+                <span class="meta">Monitoring uniformity & leaks</span>
+              </div>
+            </div>
+            <div class="image-tile">
+              <img src="https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=600&q=80" alt="Satellite view" />
+              <div class="image-tile-overlay"></div>
+              <div class="image-tile-caption">
+                <span class="label">Satellite view</span>
+                <span class="meta">NDVI map for entire farm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM ROW -->
+      <section class="bottom-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Tasks for Today</div>
+              <div class="card-subtitle">Auto-generated playbook, sorted by ROI</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Increase irrigation in Field 3 by 15 mm</span>
+                <span class="card-subtitle">
+                  Based on moisture deficit · Maize · 2.4 ha
+                </span>
+              </div>
+              <span class="badge-small">⏱ Now</span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Apply nitrogen top dressing (Urea)</span>
+                <span class="card-subtitle">
+                  Split dose to reduce volatilization risk
+                </span>
+              </div>
+              <span class="badge-small">Today</span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Scout pest hotspot in boundary zone</span>
+                <span class="card-subtitle">
+                  NDVI drop & weather risk for fungal disease
+                </span>
+              </div>
+              <span class="badge-small">This evening</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Crop-wise Focus Bubbles</div>
+              <div class="card-subtitle">Where your attention is needed</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Maize (18 ha)</span>
+                <span class="card-subtitle">High water stress in 3 fields</span>
+              </div>
+              <span class="pill-x">
+                <span class="trend-dot down"></span>
+                62% health
+              </span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Wheat (10 ha)</span>
+                <span class="card-subtitle">Nutrient balance mostly optimal</span>
+              </div>
+              <span class="pill-x">
+                <span class="trend-dot up"></span>
+                91% health
+              </span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Paddy (8 ha)</span>
+                <span class="card-subtitle">Check for standing water depth</span>
+              </div>
+              <span class="pill-x">
+                <span class="trend-dot flat"></span>
+                78% health
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Market Signals</div>
+              <div class="card-subtitle">Village mandi price snapshot</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Maize</span>
+                <span class="card-subtitle">Current: ₹1,820 / quintal</span>
+              </div>
+              <span class="badge-small">▲ +3.4%</span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Wheat</span>
+                <span class="card-subtitle">Current: ₹2,150 / quintal</span>
+              </div>
+              <span class="badge-small">▲ +1.2%</span>
+            </li>
+            <li class="list-item-row">
+              <div class="list-item-main">
+                <span>Paddy</span>
+                <span class="card-subtitle">Current: ₹1,540 / quintal</span>
+              </div>
+              <span class="badge-small">▼ -0.9%</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="footer-text">
+        Tip: Click a focus bubble (Soil / Water / Crop / Market) to change the dashboard context.
+      </div>
+    </main>
+  </div>
+<script>
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (isLoggedIn !== "true" && !user) {
+    window.location.replace("login.html");
+  } else {
+    console.log("Logged in as:", user.email);
+  }
+</script>
+<!-- Leaflet JS (MUST be before script.js) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script src = "./script.js"></script>
+
+
+  
+
+</body>
+
+</html>

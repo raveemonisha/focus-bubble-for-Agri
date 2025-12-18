@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Field Map</title>
+
+  <!-- Leaflet CSS -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<link rel="stylesheet" href="style.css" />
+
+
+  <body>
+
+<div class="field-layout">
+
+
+  
+  <!-- LEFT SIDE -->
+  <div class="fields-panel">
+    <h3>Farm Fields</h3>
+    <p>Tap a field to focus on it</p>
+
+    <div class="field-item active" data-field="north">
+      <div class="field-title">Field 1 🌾 North Plot</div>
+      <div class="field-sub">Wheat · 2.5 acres</div>
+    </div>
+
+    <div class="field-item" data-field="east">
+      <div class="field-title">Field 2 🌱 East Plot</div>
+      <div class="field-sub">Rice · 1.7 acres</div>
+    </div>
+
+    <div class="field-item" data-field="south">
+      <div class="field-title">Field 3 🌽 South Plot</div>
+      <div class="field-sub">Maize · 3.1 acres</div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div id="field-map"></div>
+
+</div>
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Page JS -->
+<script src="field-map.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroFocus Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login.css">
+
+
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <div class="logo">
+        🌱 <span>AgroFocus</span>
+      </div>
+
+      <h2>Welcome back</h2>
+      <p class="subtitle">Smart farm insights dashboard</p>
+
+      <form onsubmit="login(event)">
+  <div class="input-group">
+    <input type="text" id="email" required />
+    <label>Email</label>
+  </div>
+
+  <div class="input-group">
+    <input type="password" id="password" required />
+    <label>Password</label>
+  </div>
+
+  <button type="submit" class="login-btn">Login</button>
+
+
+</form>
+
+      <p class="hint">
+  Don’t have an account?
+  <a href="register.html">Register</a>
+</p>
+
+    </div>
+  </div>
+
+  
+  <script src="login.js"></script>
+
+
+
+</body>
+</html>

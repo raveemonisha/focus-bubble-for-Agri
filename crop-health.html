@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crop Health – AgroFocus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-badge">🌱</div>
+          <div>
+            <div class="logo-text-main">AgroFocus</div>
+            <div class="logo-text-sub">Smart farm insights</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.8rem;">
+          <div class="sidebar-section-title">Overview</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><span class="icon">📊</span><span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="field-map.html"><span class="icon">📍</span><span>Field Map</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="weather.html"><span class="icon">🌧</span><span>Weather & Irrigation</span></a>
+            </li>
+            <li class="nav-item active">
+              <a href="crop-health.html"><span class="icon">🌾</span><span>Crop Health</span></a>
+            </li>
+          </ul>
+        </div>
+
+       <div style="margin-top: 1.2rem;">
+  <div class="sidebar-section-title">Analytics</div>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="yield-trends.html">
+        <span class="icon">📈</span>
+        <span>Yield Trends</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="water-use.html">
+        <span class="icon">💧</span>
+        <span>Water Use</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="soil-lab.html">
+        <span class="icon">🧪</span>
+        <span>Soil Lab</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-env">
+          <span>🛰</span>
+          <span>NDVI & satellite enabled</span>
+        </div>
+        <div>Last sync: <strong>2 min ago</strong></div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <h1>Crop Health</h1>
+      <p>
+        Monitor vegetation index, stress signals, and pest risk across all fields.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <section class="content-grid">
+    <!-- LEFT: CROP HEALTH SUMMARY -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Crop Health Summary</div>
+          <div class="card-subtitle">By crop and field group</div>
+        </div>
+      </div>
+
+      <div class="crop-health-summary">
+        <div class="health-row">
+          <div class="health-main">
+            <div class="health-label">Wheat – 18 ha</div>
+            <div class="card-subtitle">Mostly healthy · minor nitrogen stress in 2 fields</div>
+          </div>
+          <div class="health-score-chip good">Health: 91%</div>
+        </div>
+
+        <div class="health-row">
+          <div class="health-main">
+            <div class="health-label">Maize – 12 ha</div>
+            <div class="card-subtitle">Water stress pockets on south boundary</div>
+          </div>
+          <div class="health-score-chip medium">Health: 72%</div>
+        </div>
+
+        <div class="health-row">
+          <div class="health-main">
+            <div class="health-label">Rice – 8 ha</div>
+            <div class="card-subtitle">Standing water uneven · risk of fungal disease</div>
+          </div>
+          <div class="health-score-chip low">Health: 64%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: NDVI / STRESS PATTERN -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">NDVI / Crop Vigour</div>
+          <div class="card-subtitle">Satellite-based vegetation index for last 7 days</div>
+        </div>
+      </div>
+
+      <div class="ndvi-section">
+        <div class="ndvi-score">
+          <div class="ndvi-score-big">0.68</div>
+          <div class="card-subtitle">Average NDVI (all fields)</div>
+          <div class="chip">
+            🌱 Trend: <strong>Slightly improving</strong> vs last week
+          </div>
+        </div>
+
+        <div class="ndvi-bar-grid">
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 55%;"></div>
+            </div>
+            <div class="ndvi-bar-label">D-6</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 60%;"></div>
+            </div>
+            <div class="ndvi-bar-label">D-5</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 62%;"></div>
+            </div>
+            <div class="ndvi-bar-label">D-4</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 65%;"></div>
+            </div>
+            <div class="ndvi-bar-label">D-3</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 68%;"></div>
+            </div>
+            <div class="ndvi-bar-label">D-2</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 70%;"></div>
+            </div>
+            <div class="ndvi-bar-label">Yesterday</div>
+          </div>
+          <div class="ndvi-bar-col">
+            <div class="ndvi-bar">
+              <div class="ndvi-bar-fill" style="height: 72%;"></div>
+            </div>
+            <div class="ndvi-bar-label">Today</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM: SCOUTING & PEST ALERTS -->
+  <section class="card" style="margin-top:1rem;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Scouting & Pest Alerts</div>
+        <div class="card-subtitle">Prioritized list for field staff</div>
+      </div>
+    </div>
+
+    <ul class="list">
+      <li class="list-item-row">
+        <div class="list-item-main">
+          <span>Inspect maize on south boundary (Field 3)</span>
+          <span class="card-subtitle">
+            NDVI drop + leaf discoloration detected · possible fall armyworm
+          </span>
+        </div>
+        <span class="badge-small">⚠ High</span>
+      </li>
+
+      <li class="list-item-row">
+        <div class="list-item-main">
+          <span>Check wheat nitrogen deficiency (North block)</span>
+          <span class="card-subtitle">
+            Yellowing patches mapped · verify and confirm before top dressing
+          </span>
+        </div>
+        <span class="badge-small">⬆ Medium</span>
+      </li>
+
+      <li class="list-item-row">
+        <div class="list-item-main">
+          <span>Monitor rice for fungal spots after rainfall</span>
+          <span class="card-subtitle">
+            High humidity + standing water · look for blast / blight symptoms
+          </span>
+        </div>
+        <span class="badge-small">⬇ Low</span>
+      </li>
+    </ul>
+  </section>
+</main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

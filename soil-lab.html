@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Soil Lab – AgroFocus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-badge">🌱</div>
+          <div>
+            <div class="logo-text-main">AgroFocus</div>
+            <div class="logo-text-sub">Smart farm insights</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.8rem;">
+          <div class="sidebar-section-title">Overview</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><span class="icon">📊</span><span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="field-map.html"><span class="icon">📍</span><span>Field Map</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="weather.html"><span class="icon">🌧</span><span>Weather & Irrigation</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="crop-health.html"><span class="icon">🌾</span><span>Crop Health</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <div class="sidebar-section-title">Analytics</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="yield-trends.html"><span class="icon">📈</span><span>Yield Trends</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="water-use.html"><span class="icon">💧</span><span>Water Use</span></a>
+            </li>
+            <li class="nav-item active">
+              <a href="soil-lab.html"><span class="icon">🧪</span><span>Soil Lab</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-env">
+          <span>🛰</span>
+          <span>NDVI & satellite enabled</span>
+        </div>
+        <div>Last sync: <strong>2 min ago</strong></div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <h1>Soil Lab</h1>
+          <p>
+            View soil test results, nutrient balance and field-wise fertilizer recommendations.
+          </p>
+        </div>
+      </header>
+
+      <!-- TOP GRID: TABLE + NPK GRAPH -->
+      <section class="content-grid">
+        <!-- LEFT: SOIL TEST TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Latest Soil Test – Field Summary</div>
+              <div class="card-subtitle">Values per hectare · samples taken this season</div>
+            </div>
+          </div>
+
+          <table class="soil-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>pH</th>
+                <th>Organic C (%)</th>
+                <th>Available N (kg)</th>
+                <th>P₂O₅ (kg)</th>
+                <th>K₂O (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>North Plot</td>
+                <td>6.8</td>
+                <td>0.72</td>
+                <td>290</td>
+                <td>24</td>
+                <td>185</td>
+              </tr>
+              <tr>
+                <td>East Plot</td>
+                <td>6.3</td>
+                <td>0.58</td>
+                <td>240</td>
+                <td>18</td>
+                <td>160</td>
+              </tr>
+              <tr>
+                <td>South Plot</td>
+                <td>7.1</td>
+                <td>0.65</td>
+                <td>270</td>
+                <td>20</td>
+                <td>190</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="card-subtitle" style="margin-top:0.4rem;">
+            Ideal pH for most crops: 6.5 – 7.2 · Organic carbon &gt; 0.75% indicates very good soil health.
+          </p>
+        </div>
+
+        <!-- RIGHT: SOIL HEALTH GRAPH (SVG) -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Soil Health Overview</div>
+              <div class="card-subtitle">NPK balance & overall soil score</div>
+            </div>
+          </div>
+
+          <div class="soil-health-grid">
+            <!-- Simple overall score + notes -->
+            <div class="soil-score-block">
+              <div class="soil-score-number">78/100</div>
+              <div class="card-subtitle">
+                Overall soil health index (farm average)
+              </div>
+              <div class="soil-score-chips">
+                <div class="chip">✅ Good structure</div>
+                <div class="chip">🌱 Moderate organic carbon</div>
+                <div class="chip">⚠ Slight P deficiency in east fields</div>
+              </div>
+            </div>
+
+            <!-- NPK bar graph -->
+            <div class="soil-npk-graph">
+              <svg viewBox="0 0 320 160" width="100%" preserveAspectRatio="xMidYMid meet">
+                <!-- Axes -->
+                <line x1="40" y1="20" x2="40" y2="135" stroke="#4b5563" stroke-width="1" />
+                <line x1="40" y1="135" x2="300" y2="135" stroke="#4b5563" stroke-width="1" />
+
+                <!-- Y labels -->
+                <text x="28" y="35"  style="fill:#9ca3af;font-size:10px;">High</text>
+                <text x="28" y="80"  style="fill:#9ca3af;font-size:10px;">Medium</text>
+                <text x="28" y="130" style="fill:#9ca3af;font-size:10px;">Low</text>
+
+                <!-- Ideal bars (outline) -->
+                <!-- N -->
+                <rect x="70" y="55" width="30" height="80" rx="6"
+                      fill="none" stroke="#9ca3af" stroke-dasharray="3 3" />
+                <!-- P -->
+                <rect x="150" y="65" width="30" height="70" rx="6"
+                      fill="none" stroke="#9ca3af" stroke-dasharray="3 3" />
+                <!-- K -->
+                <rect x="230" y="55" width="30" height="80" rx="6"
+                      fill="none" stroke="#9ca3af" stroke-dasharray="3 3" />
+
+                <!-- Actual farm values (solid bars) -->
+                <!-- N slightly below ideal high -->
+                <rect x="70" y="65" width="30" height="70" rx="6" fill="#22c55e" />
+                <!-- P a bit low -->
+                <rect x="150" y="90" width="30" height="45" rx="6" fill="#f97316" />
+                <!-- K good -->
+                <rect x="230" y="60" width="30" height="75" rx="6" fill="#22c55e" />
+
+                <!-- Labels under bars -->
+                <text x="85"  y="150" text-anchor="middle" style="fill:#e5e7eb;font-size:11px;">N</text>
+                <text x="165" y="150" text-anchor="middle" style="fill:#e5e7eb;font-size:11px;">P</text>
+                <text x="245" y="150" text-anchor="middle" style="fill:#e5e7eb;font-size:11px;">K</text>
+
+                <!-- Axis unit -->
+                <text x="14" y="90" transform="rotate(-90 14 90)"
+                      style="fill:#9ca3af;font-size:10px;">Relative level</text>
+              </svg>
+
+              <div class="soil-npk-legend">
+                <span class="legend-color-box" style="background:#22c55e;"></span>
+                <span class="legend-label">Current farm value</span>
+                <span class="legend-color-box" style="border:1px dashed #9ca3af;background:transparent;"></span>
+                <span class="legend-label">Recommended range</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM: FIELD RECOMMENDATIONS -->
+      <section class="card" style="margin-top:1rem;">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Field-wise Fertilizer Recommendations</div>
+            <div class="card-subtitle">Based on latest soil test & target yield</div>
+          </div>
+        </div>
+
+        <ul class="list">
+          <li class="list-item-row">
+            <div class="list-item-main">
+              <span>North Plot – Wheat (target 4.0 t/ha)</span>
+              <span class="card-subtitle">
+                Apply 80 kg N, 40 kg P₂O₅, 20 kg K₂O per ha split across 3 doses.
+              </span>
+            </div>
+            <span class="badge-small">✅ Balanced</span>
+          </li>
+
+          <li class="list-item-row">
+            <div class="list-item-main">
+              <span>East Plot – Rice (target 4.2 t/ha)</span>
+              <span class="card-subtitle">
+                Increase P dose by 25% · apply at transplanting + tillering.
+              </span>
+            </div>
+            <span class="badge-small">⚠ Adjust P</span>
+          </li>
+
+          <li class="list-item-row">
+            <div class="list-item-main">
+              <span>South Plot – Maize (target 5.0 t/ha)</span>
+              <span class="card-subtitle">
+                Maintain current N & K plan · focus on organic matter additions (FYM / compost).
+              </span>
+            </div>
+            <span class="badge-small">🌱 Build OC</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
